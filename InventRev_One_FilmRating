@@ -1,0 +1,14 @@
+Command to determine the count of films in invetory grouped by rating
+SELECT rating, COUNT(rating) AS count_rating
+FROM film 
+GROUP BY rating
+ORDER BY count_rating DESC;
+
+
+This should output
+rating	count_rating
+PG-13	223
+NC-17	210
+R	195
+PG	194
+G	178
