@@ -1,0 +1,22 @@
+SQL Query to determine the top ten performing films by revenue generated
+SELECT a.film_id, a.title, SUM(d.amount) AS total_revenue
+FROM film a
+JOIN inventory b ON a.film_id = b.film_id
+JOIN rental c ON b.inventory_id = c.inventory_id
+JOIN payment d ON c.rental_id = d.rental_id
+GROUP BY a.film_id, a.title
+ORDER BY total_revenue DESC
+LIMIT 10;
+
+Command should output:
+film_id	title	total_revenue
+879	Telegraph Voyage	215.75
+1000	Zorro Ark	199.72
+973	Wife Turn	198.73
+460	Innocent Usual	191.74
+444	Hustler Party	190.78
+764	Saturday Lambs	190.74
+893	Titans Jerk	186.73
+403	Harry Idaho	177.73
+897	Torque Bound	169.76
+239	Dogma Family	168.72
