@@ -1,0 +1,32 @@
+SQL Command to study descriptive statstics of the film table, such as minimum, maximum, average, and count
+SELECT MIN(rental_rate) AS min_rental_rate,
+MAX(rental_rate) AS max_rental_rate,
+AVG(rental_rate) AS avg_rental_rate,
+COUNT(rental_rate) AS count_rental_rate,
+MIN(replacement_cost) AS min_replacement,
+MAX(replacement_cost) AS max_replacement,
+AVG(replacement_cost) AS avg_replacement,
+COUNT(replacement_cost) AS count_replacement_values,
+MIN(rental_duration) AS min_duration,
+MAX(rental_duration) AS rental_duration,
+AVG(rental_duration) AS rental_duration,
+COUNT(rental_duration) AS count_duration,
+MIN(length) AS min_length,
+MAX(length) AS max_length,
+AVG(length) AS avg_length,
+COUNT(length) AS count_length,
+COUNT(*) AS row_number
+FROM film
+
+This command should output:
+min_rental_rate	max_rental_rate	avg_rental_rate	count_rental_rate
+0.99	4.99	2.98	1000
+min_replacement	max_replacement	avg_replacement	count_replacement_values
+9.99	29.99	19.984	1000
+min_duration	rental_duration	rental_duration-2	count_duration
+3	7	4.985	1000
+min_length	max_length	avg_length	count_length
+46	185	115.272	1000
+			
+row_number			
+1000			
