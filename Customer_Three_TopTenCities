@@ -1,0 +1,24 @@
+SQL command to determine the top ten cities grouped by customer numbers
+SELECT COUNT(A.customer_id) AS customer_count, C.city, D.country
+FROM customer A
+INNER JOIN address B ON A. address_id = B.address_id
+INNER JOIN city C ON B. city_id = C.city_id
+INNER JOIN country D ON C. country_id = D. country_id
+GROUP BY country, city
+HAVING country IN ('India', 'China', 'United States', 'Japan', 'Mexico',
+  'Brazil', 'Russian Federation', 'Phillippines' , 'Turkey', 'Indonesia')
+ORDER BY count (customer_id) DESC
+LIMIT 10
+
+Command should output
+customer_count	city	country
+2	Aurora	United States
+1	Acua	Mexico
+1	Citrus Heights	United States
+1	Iwaki	Japan
+1	Ambattur	India
+1	Shanwei	China
+1	So Leopoldo	Brazil
+1	Teboksary	Russian Federation
+1	Tianjin	China
+1	Cianjur	Indonesia
