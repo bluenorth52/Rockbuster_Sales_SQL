@@ -1,0 +1,14 @@
+SQL Command to determine revenues earned by rental rates of films
+SELECT rental_rate, SUM(amount) AS total_revenue
+FROM payment A 
+INNER JOIN rental B ON A.rental_id=B.rental_id
+INNER JOIN inventory C ON B.inventory_id=C.inventory_id
+INNER JOIN film D ON C.film_id=D.film_id
+GROUP BY rental_rate 
+ORDER BY SUM(amount) DESC
+
+Command should output:
+rental_rate	total_revenue
+4.99	 29,944.19 
+2.99	 19,451.27 
+0.99	 11,916.58 
