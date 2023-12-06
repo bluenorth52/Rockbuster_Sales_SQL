@@ -1,0 +1,22 @@
+SQL Query to determine the bottom ten performing films by revenue
+SELECT a.film_id, a.title, SUM(d.amount) AS total_revenue
+FROM film a
+JOIN inventory b ON a.film_id = b.film_id
+JOIN rental c ON b.inventory_id = c.inventory_id
+JOIN payment d ON c.rental_id = d.rental_id
+GROUP BY a.film_id, a.title
+ORDER BY total_revenue ASC
+LIMIT 10;
+
+Command should output:
+film_id	title	total_revenue
+635	Oklahoma Jumanji	5.94
+261	Duffel Apocalypse	5.94
+885	Texas Watch	5.94
+335	Freedom Cleopatra	5.95
+996	Young Language	6.93
+718	Rebel Airport	6.93
+910	Treatment Jekyll	6.94
+196	Cruelty Unforgiven	6.94
+523	Lights Deer	7.93
+475	Japanese Run	7.94
