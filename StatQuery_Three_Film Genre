@@ -1,1 +1,30 @@
+SQL command to study min, max and average of the film table; specifically the release year,
+genre, rating, and length of film
+SELECT
+    MIN(D.release_year) AS min_release_year,
+    MAX(D.release_year) AS max_release_year,
+    AVG(D.release_year) AS avg_release_year,
+    MIN(D.rating) AS min_rating,
+    MAX(D.rating) AS max_rating,
+    MIN(E.name) AS min_genre,
+    MAX(E.name) AS max_genre,
+    MIN(D.length) AS min_length,
+    MAX(D.length) AS max_length,
+    AVG(D.length) AS avg_length,
+    COUNT(*) AS row_number
+FROM film D
+LEFT JOIN film_category F ON D.film_id = F.film_id
+LEFT JOIN category E ON F.category_id = E.category_id
 
+This command should output
+min_release_year	max_release_year	avg_release_year
+2006	2006	2006
+min_rating	max_rating	
+G	NC-17	
+min_genre	max_genre	
+Action	Travel	
+min_length	max_length	avg_length
+46	185	115.272
+		
+row_number		
+1000		
