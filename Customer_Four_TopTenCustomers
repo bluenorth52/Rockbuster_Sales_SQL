@@ -1,0 +1,24 @@
+SQL command to determine top ten customers by total amount paid for film rentals. Please note this command will 
+output PII that will need to be handled and utlized with professionalism. 
+SELECT SUM(A.amount) AS total_amount_paid, A.customer_id, B.first_name, B.last_name, D.city, E.country
+FROM payment A
+INNER JOIN customer B ON A.customer_id = B.customer_id
+INNER JOIN address C ON B.address_id = C.address_id
+INNER JOIN city D ON C.city_id = D.city_id
+INNER JOIN country E ON D.country_ID = E.country_ID
+GROUP BY A.customer_id, B.first_name, B.last_name, D.city, E.country
+ORDER BY total_amount_paid DESC
+LIMIT 10;
+
+Command should output
+total_amount_paid	customer_id	first_name	last_name	city	country
+211.55	148	Eleanor	Hunt	Saint-Denis	Runion
+208.58	526	Karl	Seal	Cape Coral	United States
+194.61	178	Marion	Snyder	Santa Brbara dOeste	Brazil
+191.62	137	Rhonda	Kennedy	Apeldoorn	Netherlands
+189.6	144	Clara	Shaw	Molodetno	Belarus
+183.63	459	Tommy	Collazo	Qomsheh	Iran
+167.67	181	Ana	Bradley	Memphis	United States
+167.62	410	Curtis	Irby	Richmond Hill	Canada
+166.61	236	Marcia	Dean	Tanza	Philippines
+162.67	403	Mike	Way	Valparai	India
