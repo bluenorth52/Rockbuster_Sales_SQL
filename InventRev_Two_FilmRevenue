@@ -1,0 +1,30 @@
+SQL Query to determine the count of each film genre and the revenue earned
+SELECT c.name AS genre, COUNT(DISTINCT a.film_id) AS film_count,
+    SUM(g.amount) AS total_revenue
+FROM film a
+JOIN film_category b ON a.film_id = b.film_id
+JOIN category c ON b.category_id = c.category_id
+JOIN inventory d ON a.film_id = d.film_id
+JOIN rental e ON d.inventory_id = e.inventory_id
+JOIN payment g ON e.rental_id = g.rental_id
+GROUP BY c.name
+
+Should output the following:
+genre	film_count	total_revenue
+Sports	73	 4,892.19 
+Sci-Fi	59	 4,336.01 
+Animation	64	 4,245.31 
+Drama	61	 4,118.46 
+Comedy	56	 4,002.48 
+New	60	 3,966.38 
+Action	61	 3,951.84 
+Foreign	67	 3,934.47 
+Games	58	 3,922.18 
+Family	66	 3,782.26 
+Documentary	63	 3,749.65 
+Horror	53	 3,401.27 
+Classics	54	 3,353.38 
+Children	58	 3,309.39 
+Travel	53	 3,227.36 
+Music	51	 3,071.52 
+Thriller	1	 47.89 
