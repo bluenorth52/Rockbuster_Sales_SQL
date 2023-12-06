@@ -1,0 +1,13 @@
+SQL Command to study the most active customer
+SELECT MODE() WITHIN GROUP (ORDER BY first_name) AS mode_first_name,
+MODE() WITHIN GROUP (ORDER BY last_name) AS mode_last_name,
+MODE() WITHIN GROUP (ORDER BY email) AS mode_email,
+MODE() WITHIN GROUP (ORDER BY activebool) AS mode_activebool,
+MODE() WITHIN GROUP (ORDER BY create_date) AS mode_create_date,
+MODE() WITHIN GROUP (ORDER BY last_update) AS mode_last_update,
+MODE() WITHIN GROUP (ORDER BY active) AS mode_active
+FROM customer
+
+This command should output:
+mode_first_name	mode_last_name	mode_email	mode_activebool	mode_create_date	mode_last_update	mode_active
+Jamie	Abney	aaron.selby@sakilacustomer.org	TRUE	2/14/2006	49:45.7	1
